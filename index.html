@@ -6,5 +6,33 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <div id="welcome" style="display: flex;">
+        <div>
+            <button id="myBtn">oyuna gir</button>    
+        </div> 
+    </div>
+    <div id="game" style="display: none;">
+        <canvas id="can" width="840" height="462"></canvas>
+        <img id="korona" src="./assets/korona.png" style="display: none;">
+        <img id="player" src="./assets/player.png" style="display: none;">
+
+        <div  id='succes' width="840" height="462" style="display: none;">
+            <h1>Basarili oldun</h1>
+            </br>
+            <button class='btn' onClick="window.location.reload();">Devam et!</button>
+        </div>
+        
+        <div  id='game-over' width="840" height="462" style="display: none;">
+            <h1>Koronaya Yakalandin</h1>
+            </br>
+            <button class='btn' onClick="window.location.reload();">Halki koronadan kurtar</button>
+        </div>
+    </div>
+
+    <!-- javascript dosyalarimiz -->
+    <script src="./js/router.js" defer></script>
+    <script src="./js/helper.js" defer></script>
+    <script src="./js/game.js" defer></script>
+    <script src="./js/core.js" defer></script>
 </body>
 </html>
