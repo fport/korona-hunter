@@ -1,38 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"UTF>
-    <title>Korona Hunter</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./src/css/style.css">
+  <title>Korona Hunter</title>
+
+  <!-- Router -->
+  <script src="./src/router/home.js"></script>
+  <script src="./src/router/game.js"></script>
+  <script src="./src/router/gameStatus.js"></script>
+  <script src="./src/router/pages.js"></script>
 </head>
+
 <body>
-    <div id="welcome" style="display: flex;">
-        <div>
-            <button id="myBtn">oyuna gir</button>    
-        </div> 
-    </div>
-    <div id="game" style="display: none;">
-        <canvas id="can" width="840" height="462"></canvas>
-        <img id="korona" src="./assets/korona.png" style="display: none;">
-        <img id="player" src="./assets/player.png" style="display: none;">
 
-        <div  id='succes' width="840" height="462" style="display: none;">
-            <h1>Basarili oldun</h1>
-            </br>
-            <button class='btn' onClick="window.location.reload();">Devam et!</button>
-        </div>
-        
-        <div  id='game-over' width="840" height="462" style="display: none;">
-            <h1>Koronaya Yakalandin</h1>
-            </br>
-            <button class='btn' onClick="window.location.reload();">Halki koronadan kurtar</button>
-        </div>
-    </div>
+  <div id="root"></div>
+  <script src="app.js"></script>
 
-    <!-- javascript dosyalarimiz -->
-    <script src="./js/router.js" defer></script>
-    <script src="./js/helper.js" defer></script>
-    <script src="./js/game.js" defer></script>
-    <script src="./js/core.js" defer></script>
+  <!-- Game Script -->
+  <script src="./src/game/core.js"></script>
+  <script src="./src/game/game-board.js"></script>
+  <script src="./src/game/helper.js"></script>
 </body>
+
 </html>
