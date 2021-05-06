@@ -8,7 +8,9 @@ function gameScreen(data) {
     </div>
     <canvas id="canvas" width="840" height="462"></canvas>
     <img id="korona" src="./assets/korona.png" style="display: none;">
+    <img id="koronaKursun" src="./assets/koronaKursun.png" style="display: none;">
     <img id="player" src="./assets/player.png" style="display: none;">
+    <img id="playerKursun" src="./assets/playerKursun.png" style="display: none;">
   </div>
   `;
 }

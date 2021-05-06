@@ -3,9 +3,23 @@ const Game = function () {
 
   this.player = document.getElementById("player");
   this.korona = document.getElementById("korona");
+  this.koronaKursun = document.getElementById("koronaKursun");
+  this.playerKursun = document.getElementById("playerKursun");
 
-  this.sd = { w: 384 * this.scl, h: 512 * this.scl };
-  this.id = { w: 512 * this.scl, h: 512 * this.scl, rows: 3, cols: 8, gap: 10 };
+  this.sd = {
+    w: 384 * this.scl,
+    h: 512 * this.scl,
+  };
+
+  // dusman koronalarin initial bilgileri
+  this.id = {
+    w: 512 * this.scl,
+    h: 512 * this.scl,
+    rows: 3,
+    cols: 10,
+    gap: 10,
+  };
+
   this.ship = {
     x: canvasWidth / 2 - this.sd.w / 2,
     y: canvasHeight - 10 - this.sd.h,
@@ -47,7 +61,7 @@ const Game = function () {
       }
     }
   };
-
+  //image
   this.draw = function (cc) {
     for (let i = 0; i < this.invaders.length; i++) {
       let invader = this.invaders[i];
@@ -129,6 +143,15 @@ const Game = function () {
         this.missileHeight,
         shipMissileColor
       );
+      //kursun
+      // drawRect(
+      //   cc,
+      //   missile.x,
+      //   missile.y,
+      //   this.missileWidth,
+      //   this.missileHeight,
+      //   shipMissileColor
+      // );
     }
 
     for (let i = 0; i < this.invadersMissiles.length; i++) {
@@ -147,6 +170,7 @@ const Game = function () {
         )
       ) {
         this.completed = true;
+
         route("gameover", { score: 2, username: username });
       }
       drawRect(
@@ -157,6 +181,15 @@ const Game = function () {
         this.missileHeight,
         invaderMissileColor
       );
+
+      // drawRect(
+      //   cc,
+      //   missile.x,
+      //   missile.y,
+      //   this.missileWidth,
+      //   this.missileHeight,
+      //   invaderMissileColor
+      // );
     }
   };
 
@@ -177,6 +210,13 @@ const Game = function () {
   this.checkGameCompleted = function () {
     if (this.invaders.length < 1) {
       this.completed = true;
+
+      this.shipSpeed = 4;
+      this.shipMissileSpeed = 3;
+      this.ship.x = 4;
+      this.ship.y = 3;
+      this.invaderMissileSpeed = 3;
+
       route("gamesuccess", { score: 2, username: username });
     }
   };

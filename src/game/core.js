@@ -9,9 +9,10 @@ const invaderMissileColor = "#8854d0";
 let gameCanvas, canvasWidth, canvasHeight;
 
 let leftkey = (rightkey = false);
-let cc, game;
+let createCanvas, game;
 
 function init() {
+  //oyunumuzu olusturcagimiz canvasi olusturuyoruz
   gameCanvas = document.getElementById("canvas");
   canvasHeight = gameCanvas.height;
   canvasWidth = gameCanvas.width;
@@ -20,17 +21,18 @@ function init() {
   window.addEventListener("keyup", onKeyUp);
   window.addEventListener("keydown", onKeyDown);
 
-  cc = gameCanvas.getContext("2d");
+  createCanvas = gameCanvas.getContext("2d");
   game = new Game();
   game.init();
 }
 
 function update() {
-  clearCanvas(cc);
-  game.update(cc);
+  clearCanvas(createCanvas);
+  game.update(createCanvas);
   requestAnimationFrame(update);
 }
 
+// oyunda kullancagimiz tuslara basililmasini kontrol ediyor
 function onKeyDown(e) {
   let keycode = e.keyCode;
   //left
@@ -47,6 +49,7 @@ function onKeyDown(e) {
   }
 }
 
+// oyunda kullancagimiz tuslara basildiktan sonra birakilmasini kontrol ediyor
 function onKeyUp(e) {
   let keycode = e.keyCode;
   //left
@@ -58,6 +61,13 @@ function onKeyUp(e) {
     rightkey = false;
   }
 }
+
+// @desc : src/router/pages.js
+// id: "2",
+// url: "#game",
+// html: gameScreen,
+// projede route kurulan route sistemini
+// hash kontrol edip, game route'una gelindiyse oyunu init ve updateliyoruz.
 
 const events = ["hashchange", "load"];
 

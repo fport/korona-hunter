@@ -19,7 +19,7 @@ function rectColl(ax, ay, aw, ah, bx, by, bw, bh) {
   return false;
 }
 
-var Vec = function (x, y) {
-  this.x = x;
-  this.y = y;
-};
+// var Vec = function (x, y) {
+//   this.x = x;
+//   this.y = y;
+// };
