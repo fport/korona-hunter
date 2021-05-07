@@ -4,7 +4,7 @@ function gameScreen(data) {
   <div class="game-container">
     <div class="game-information">
       <div class="username"> Oyuncu : ${user.toUpperCase()}</div>
-      <a class="cikis" href="/" onClick="removeLocalStorage()">Oyundan Çıkış Yap</a>
+      <a class="cikis" href="/korona-hunter" onClick="removeLocalStorage()">Oyundan Çıkış Yap</a>
     </div>
     <canvas id="canvas" width="840" height="462"></canvas>
     <img id="korona" src="./assets/korona.png" style="display: none;">

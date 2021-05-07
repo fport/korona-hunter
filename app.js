@@ -8,7 +8,6 @@ function route(url, data) {
   window.location.hash = url;
   let currentPage = getCurrentPage(window.location.hash);
   if (currentPage) {
-    console.log(currentPage);
     document.getElementById("root").innerHTML = currentPage.html(data);
   } else {
     document.getElementById("root").innerHTML = "404 Not Found";
