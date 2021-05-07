@@ -3,9 +3,8 @@ function gameScreen(data) {
   return `
   <div class="game-container">
     <div class="game-information">
-      <div class="username"> Username : ${user}</div>
-      <button onClick="route('informationGame')">Dokumantasyon</button>
-      <a href="/" onClick="removeLocalStorage()">Oyundan Çıkış Yap</a>
+      <div class="username"> Oyuncu : ${user.toUpperCase()}</div>
+      <a class="cikis" href="/" onClick="removeLocalStorage()">Oyundan Çıkış Yap</a>
     </div>
     <canvas id="canvas" width="840" height="462"></canvas>
     <img id="korona" src="./assets/korona.png" style="display: none;">

@@ -190,6 +190,7 @@ const Game = function () {
   };
 
   this.checkGameCompleted = function () {
+    localStorage.setItem("killedKorona", this.invaders.length);
     if (this.invaders.length < 1) {
       this.completed = true;
 
