@@ -23,6 +23,7 @@ const gameOverScreen = (data) => `
   </div>
 </div>
 `;
+
 const handleOnClick = () => {
   route("game", {});
 };

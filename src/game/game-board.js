@@ -143,15 +143,6 @@ const Game = function () {
         this.missileHeight,
         shipMissileColor
       );
-      //kursun
-      // drawRect(
-      //   cc,
-      //   missile.x,
-      //   missile.y,
-      //   this.missileWidth,
-      //   this.missileHeight,
-      //   shipMissileColor
-      // );
     }
 
     for (let i = 0; i < this.invadersMissiles.length; i++) {
@@ -181,15 +172,6 @@ const Game = function () {
         this.missileHeight,
         invaderMissileColor
       );
-
-      // drawRect(
-      //   cc,
-      //   missile.x,
-      //   missile.y,
-      //   this.missileWidth,
-      //   this.missileHeight,
-      //   invaderMissileColor
-      // );
     }
   };
 

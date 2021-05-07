@@ -4,6 +4,7 @@ function gameScreen(data) {
   <div class="game-container">
     <div class="game-information">
       <div class="username"> Username : ${user}</div>
+      <button onClick="route('informationGame')">Dokumantasyon</button>
       <a href="/" onClick="removeLocalStorage()">Oyundan Çıkış Yap</a>
     </div>
     <canvas id="canvas" width="840" height="462"></canvas>

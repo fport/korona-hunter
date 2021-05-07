@@ -19,4 +19,9 @@ const pages = [
     url: "#gameSuccess",
     html: gameSuccessScreen,
   },
+  {
+    id: "5",
+    url: "#informationGame",
+    html: informationGame,
+  },
 ];
