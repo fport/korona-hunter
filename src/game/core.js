@@ -3,8 +3,6 @@ const RIGHT_ASCII = 39;
 const SPACE_ASCII = 32;
 
 const clearColor = "#121212";
-const shipMissileColor = "#FC427B";
-const invaderMissileColor = "#8854d0";
 
 let gameCanvas, canvasWidth, canvasHeight;
 

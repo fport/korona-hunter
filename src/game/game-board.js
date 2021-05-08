@@ -1,30 +1,32 @@
 const Game = function () {
+  // boyut kucultmek icin kullaniyoruz
   this.scl = 0.1;
 
+  // karakterlerimiz
   this.player = document.getElementById("player");
   this.korona = document.getElementById("korona");
   this.koronaKursun = document.getElementById("koronaKursun");
   this.playerKursun = document.getElementById("playerKursun");
 
-  this.sd = {
-    w: 384 * this.scl,
-    h: 512 * this.scl,
+  this.scaled = {
+    width: 384 * this.scl,
+    height: 512 * this.scl,
   };
 
   // dusman koronalarin initial bilgileri
   this.id = {
-    w: 512 * this.scl,
-    h: 512 * this.scl,
+    width: 512 * this.scl,
+    height: 512 * this.scl,
     rows: 3,
     cols: 10,
     gap: 10,
   };
 
   this.ship = {
-    x: canvasWidth / 2 - this.sd.w / 2,
-    y: canvasHeight - 10 - this.sd.h,
-    w: this.sd.w,
-    h: this.sd.h,
+    x: canvasWidth / 2 - this.scaled.width / 2,
+    y: canvasHeight - 10 - this.scaled.height,
+    width: this.scaled.width,
+    height: this.scaled.height,
   };
 
   this.shipMissiles = new Array();
@@ -35,45 +37,59 @@ const Game = function () {
   this.invadersMissiles = new Array();
   this.invaderMissileSpeed = 3;
 
-  this.missileWidth = 3;
+  this.missileWidth = 20;
   this.missileHeight = 20;
 
   this.completed = false;
-  this.invadersRange = { x: 0, w: 0 };
+  this.invadersRange = { x: 0, width: 0 };
 
   this.init = function () {
-    let dd = this.id;
-    this.invadersRange.w = dd.cols * dd.w + dd.cols * dd.gap;
-    this.invadersRange.x = canvasWidth / 2 - this.invadersRange.w / 2;
+    let propertyKorona = this.id;
+    this.invadersRange.width =
+      propertyKorona.cols * propertyKorona.width +
+      propertyKorona.cols * propertyKorona.gap;
+
+    this.invadersRange.x = canvasWidth / 2 - this.invadersRange.width / 2;
+
     let yoffset = 10;
     let xoffset = this.invadersRange.x;
-    for (let x = 0; x < dd.cols; x++) {
-      for (let y = 0; y < dd.rows; y++) {
+
+    for (let x = 0; x < propertyKorona.cols; x++) {
+      for (let y = 0; y < propertyKorona.rows; y++) {
         let invader = {
-          x: x * dd.w + x * dd.gap,
-          y: y * dd.h + y * dd.gap,
-          w: dd.w,
-          h: dd.h,
+          x: x * propertyKorona.width + x * propertyKorona.gap,
+          y: y * propertyKorona.height + y * propertyKorona.gap,
+          width: propertyKorona.width,
+          height: propertyKorona.height,
         };
+
         invader.x += xoffset;
         invader.y += yoffset;
         this.invaders.push(invader);
       }
     }
   };
+
   //image
   this.draw = function (cc) {
     for (let i = 0; i < this.invaders.length; i++) {
       let invader = this.invaders[i];
-      drawImg(cc, this.korona, invader.x, invader.y, invader.w, invader.h);
+      drawImg(
+        cc,
+        this.korona,
+        invader.x,
+        invader.y,
+        invader.width,
+        invader.height
+      );
     }
     drawImg(
       cc,
       this.player,
       this.ship.x,
       this.ship.y,
-      this.ship.w,
-      this.ship.h
+      this.ship.width,
+      this.ship.height
     );
   };
 
@@ -97,16 +113,17 @@ const Game = function () {
       this.ship.x = this.invadersRange.x;
     }
     if (
-      this.ship.x + this.ship.w >
-      this.invadersRange.x + this.invadersRange.w
+      this.ship.x + this.ship.width >
+      this.invadersRange.x + this.invadersRange.width
     ) {
-      this.ship.x = this.invadersRange.x + this.invadersRange.w - this.ship.w;
+      this.ship.x =
+        this.invadersRange.x + this.invadersRange.width - this.ship.width;
     }
   };
 
   this.shipShootMissile = function () {
     let missile = {
-      x: this.ship.x + this.ship.w / 2 - this.missileWidth / 2,
+      x: this.ship.x + this.ship.width / 2 - this.missileWidth / 2,
       y: this.ship.y - this.missileHeight,
     };
     this.shipMissiles.push(missile);
@@ -126,8 +143,8 @@ const Game = function () {
             this.missileHeight,
             inv.x,
             inv.y,
-            inv.w,
-            inv.h
+            inv.width,
+            inv.height
           )
         ) {
           this.shipMissiles.splice(i, 1);
@@ -141,7 +158,7 @@ const Game = function () {
         missile.y,
         this.missileWidth,
         this.missileHeight,
-        shipMissileColor
+        this.playerKursun
       );
     }
 
@@ -156,8 +173,8 @@ const Game = function () {
           this.missileHeight,
           this.ship.x,
           this.ship.y,
-          this.ship.w,
-          this.ship.h
+          this.ship.width,
+          this.ship.height
         )
       ) {
         this.completed = true;
@@ -170,7 +187,7 @@ const Game = function () {
         missile.y,
         this.missileWidth,
         this.missileHeight,
-        invaderMissileColor
+        this.koronaKursun
       );
     }
   };
@@ -182,8 +199,8 @@ const Game = function () {
         Math.floor(Math.random() * this.invaders.length)
       ];
       let missile = {
-        x: invader.x + invader.w / 2 - this.missileWidth / 2,
-        y: invader.y + invader.h,
+        x: invader.x + invader.width / 2 - this.missileWidth / 2,
+        y: invader.y + invader.height,
       };
       this.invadersMissiles.push(missile);
     }
@@ -200,7 +217,7 @@ const Game = function () {
       this.ship.y = 3;
       this.invaderMissileSpeed = 3;
 
-      route("gamesuccess", { score: 2, username: username });
+      route("gamesuccess", { username: username });
     }
   };
 };

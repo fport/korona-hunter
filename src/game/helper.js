@@ -3,9 +3,8 @@ function clearCanvas(cc) {
   cc.fillRect(0, 0, canvasWidth, canvasHeight);
 }
 
-function drawRect(cc, x, y, w, h, color) {
-  cc.fillStyle = color;
-  cc.fillRect(x, y, w, h);
+function drawRect(cc, x, y, w, h, img) {
+  cc.drawImage(img, x, y, w, h);
 }
 
 function drawImg(cc, img, x, y, w, h) {

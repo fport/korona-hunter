@@ -13,12 +13,12 @@ function homeScreen(data) {
 
         <div class="home-info">
           <a class="github" target="_blank" href="https://github.com/fport/korona-hunter">Proje Kodu</a>
-          <a class="linkedin" target="_blank" href="https://linktr.ee/furkanportakal">Iletisim</a>
-          <button class="docs" onClick="route('informationGame')">Dokumantasyon</button>
+          <a class="linkedin" target="_blank" href="https://linktr.ee/furkanportakal">İletisim</a>
+          <button class="docs" onClick="route('informationGame')">Dökümantasyon</button>
         </div>
 
         <div class="home-start-game">
-          <input type="text" id="name" placeholder="isim gir">
+          <input type="text" id="name" placeholder="isim gir" value="${userName}">
           <button class="home-to-game" onclick="startGame()">oyuna gir</button> 
         </div>
 
@@ -28,6 +28,10 @@ function homeScreen(data) {
   </div>
 `;
 }
+
+const userName = localStorage.getItem("user")
+  ? localStorage.getItem("user")
+  : "";
 
 function startGame() {
   let usernameInputValue = document.querySelector("#name").value;
