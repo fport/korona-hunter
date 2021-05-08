@@ -23,6 +23,17 @@
     padding: 1rem;
 }
 
+.information-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 1rem;
+}
+
 .information-content {
     display: flex;
     flex-direction: column;
@@ -37,11 +48,12 @@
 
 .information-start-game {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cikis{
     margin: 0.1rem;
-    padding: 0.5rem 1.5rem;
     border-radius: 8px;
     font-weight: 600;
     border: none;
@@ -49,7 +61,7 @@
     color: rgb(255, 255, 255);
     transition: all 0.15s ease 0s;
     text-decoration: none;
-    margin-top: 1rem;
+    white-space: nowrap;
 }
 
 .information-content {

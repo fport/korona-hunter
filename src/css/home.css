@@ -1,0 +1,103 @@
+#welcome {
+    height: inherit;
+    background-image: linear-gradient(to left bottom, #000000, #070506, #0c0a0c, #100f12, #131316, #1b2029, #1c2e3c, #143e4e, #005f6f, #008283, #00a689, #42c880);
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    
+}
+
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 300px;
+    border: 5px dashed black;
+    background-color: #141618;
+    border-radius: 1rem;
+}
+
+.home-content-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: fit-content;
+
+}
+
+.home-game-name {
+    text-decoration: underline rgb(99, 208, 171);
+    text-align: center;
+    font-size: 21px;
+    font-weight: 700;
+    color: rgb(253, 247, 247);
+    text-transform: capitalize;
+    text-decoration-style: wavy;
+}
+
+.home-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+}
+
+.github, .linkedin {
+    margin: 0.1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    background-color: rgb(99, 208, 171);
+    color: rgb(255, 255, 255);
+    transition: all 0.15s ease 0s;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.docs {
+    cursor: pointer;
+    height: 34.64px;
+    margin: 0.1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    background-color: rgb(99, 208, 171);
+    color: rgb(255, 255, 255);
+    transition: all 0.15s ease 0s;
+}
+
+#name {
+    width: 50%;
+    background-color: rgb(180, 230, 180);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(99, 208, 171);
+    transition: all 0.15s ease 0s;
+    color: rgb(32, 156, 133);
+}
+
+.home-to-game {
+    cursor: pointer;
+    height: 33.33px;
+    margin: 0.1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    background-color: rgb(36, 80, 65);
+    color: rgb(255, 255, 255);
+    transition: all 0.15s ease 0s;
+}
