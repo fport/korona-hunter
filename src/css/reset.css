@@ -4,6 +4,27 @@
     box-sizing: border-box;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
-#root {
-    height: 100vh;
+
+/* Scroll bar ayarlari */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(126, 216, 201); 
+    border-radius: 12px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(99, 208, 171); 
+    border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(99, 208, 171); 
 }

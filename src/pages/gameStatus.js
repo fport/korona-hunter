@@ -30,7 +30,4 @@ const handleOnClick = () => {
 
 const pushHome = () => {
   location.href = "";
-  setTimeout(() => {
-    location.hash = "game";
-  }, 100);
 };

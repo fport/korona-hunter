@@ -1,53 +1,31 @@
-.game-container, #game-over {
-    height: inherit;
-    background-image: url("../../assets/bg.png");
-}
-
-#canvas {
-    position: absolute;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-    background-color: #121212;
-    border: 2px dashed #304853; 
-}
-
 .status-container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: inherit;
+    height: 100vh;
     background-image: url("../../assets/bg.png");
 }
 
 #success{
+    display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    z-index: 99;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
     background-color: #50af60;
     color: white;
-    width: 840px;
-    height: 462px; 
 }
 
 #game-over{
+    display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    z-index: 99;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
     background-color: #c03e35;
     color: white;
-    width: 840px;
-    height: 462px; 
 }
 
 .status-succes-wrapper {
@@ -55,8 +33,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    width: 840px;
+    height: 462px;
     border: 5px dashed #000000; 
     background: #2C3E50; 
     background: -webkit-linear-gradient(to bottom, #4CA1AF, #2C3E50);  
@@ -68,14 +46,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    width: 840px;
+    height: 462px;
     border: 5px dashed #000000; 
     background: #2C3E50; 
     background: -webkit-linear-gradient(to bottom, #FD746C, #2C3E50); 
     background: linear-gradient(to bottom, #FD746C, #2C3E50); 
-    
 }
+
 .btn {
     padding: 0.5rem 1.5rem;
     border-radius: 8px;
@@ -92,14 +70,6 @@
     background-color: rgb(15, 67, 134);
 }
 
-.game-information {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
 .username {
     margin-top: 2rem;
 }
@@ -108,5 +78,5 @@
     padding: 0.5rem;
     text-decoration: none;
     color: white;
-    border: 1px solid white;
+    border: 1px solid rgb(15, 17, 15);
 }

@@ -1,5 +1,6 @@
 #welcome {
-    height: inherit;
+    height: 100%;
+    min-height: 100vh;
     background-image: linear-gradient(to left bottom, #000000, #070506, #0c0a0c, #100f12, #131316, #1b2029, #1c2e3c, #143e4e, #005f6f, #008283, #00a689, #42c880);
 }
 
@@ -9,20 +10,18 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100vh;
-    
 }
 
 .home-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 400px;
+    justify-content: space-evenly;
+    width: 420px;
     height: 300px;
     border: 5px dashed black;
-    background-color: #141618;
     border-radius: 1rem;
+    background-color: #141618;
 }
 
 .home-content-top {
@@ -47,6 +46,7 @@
 
 .home-info {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -100,4 +100,15 @@
     background-color: rgb(36, 80, 65);
     color: rgb(255, 255, 255);
     transition: all 0.15s ease 0s;
+}
+
+#korona {
+    animation: spin 10s infinite reverse linear;
+}
+
+
+@keyframes spin {
+    100% {
+        transform: rotate(1turn);
+    }
 }
