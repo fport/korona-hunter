@@ -86,7 +86,7 @@ open index.html
 
 
 ## 🧩 A Little About Design
-Figma tasarımına gitmek için [`click`](https://www.figma.com/file/kTrF4iPtA7oYXXJqy539Ur/Korona-Avc%C4%B1s%C4%B1?node-id=0%3A1) .
+Figma tasarımına gitmek için [`tıkla`](https://www.figma.com/file/kTrF4iPtA7oYXXJqy539Ur/Korona-Avc%C4%B1s%C4%B1?node-id=0%3A1) .
 
 ## Contact
 [@fport](https://portakal.dev/) tarafından oluşturulmuştur - benimle iletişime geçebilirsin!
