@@ -53,10 +53,10 @@ Created by [@fport](https://portakal.dev/) - feel free to contact me!
 
 `Bu proje BTU BLM0226 Web Tabanlı Programlama dersi için geliştirilmiş bir javascript oyunudur.`
 
-## Oyunun Senaryosu
+## 💬 Oyunun Senaryosu
 Yakın zamanlarda dünyadan gezegenimize gelen kişiler ile birlikte korona virüsleri de geldiği ortaya çıkmıştır. Ve kendini bu konuya adayan sağlık çalışanımız korona virüslerini imha etmek için elinden geleni ortaya koyar. Koronalar portakallı korona virüsü yollar. Sağlık çalışanımız buna karşılık maske yollayarak korona virüslerini imha eder. Düşük seviyede olan koronalar imha edilirse bir sonraki seviyeye geçilerek devam edilir. Eğer ki koronalar tarafından virüs kaparsa halkta buna bağlı olarak koronaya yakalanacaktır. Dikkatli ol halkı kurtar!
 
-## Oyun Ekranları && Oyun Ekran Görüntüleri
+## 📸 Oyun Ekranları && Oyun Ekran Görüntüleri
 Oyun sahnesi olarak 3 çeşitler sahne içeriyor. Ana oyunun oynalındığı ekran, koronaları başarılı bir şekilde imha edildiğinde bizi karşılayacak ekran, ve son olarak basarisiz olunduğunda bizi karsilicak ekran olmak üzere oyun sahnelerini içeriyor. Projenin giriş ekranından ulaşabilceğimiz oyunun nasıl oynancagini ve projenin detaylarını anlatılan bilgiler yer alıyor.  
 
 <img src="https://user-images.githubusercontent.com/56169582/117571549-b9682700-b0d7-11eb-969e-afefa7e76ac9.png" width="400px" height="auto">. 
@@ -69,14 +69,14 @@ Oyun sahnesi olarak 3 çeşitler sahne içeriyor. Ana oyunun oynalındığı ekr
 - Html Canvas
 - CSS
 
-## Özellikler
+## 🎉 Özellikler
 * Single html && router
 * Seviye Tasarımı
 * Senaryonun özgünlüğü
 * Özel oyun karakterleri
 * Chrome ve Firefox platformları için destek
 
-## Nasıl oynanır && Kurulum 
+## 🚨 Nasıl oynanır && Kurulum 
 ```sh
 git clone https://github.com/fport/korona-hunter.git
 cd korona-hunter
@@ -88,5 +88,5 @@ open index.html
 ## 🧩 Tasarımlar
 Figma tasarımına gitmek için [`tıkla`](https://www.figma.com/file/kTrF4iPtA7oYXXJqy539Ur/Korona-Avc%C4%B1s%C4%B1?node-id=0%3A1) .
 
-## İletişim
+## 🔍️ İletişim
 [@fport](https://portakal.dev/) tarafından oluşturulmuştur - benimle iletişime geçebilirsin!
