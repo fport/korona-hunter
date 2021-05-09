@@ -43,7 +43,7 @@ function onKeyDown(e) {
   }
   //space
   if (keycode == SPACE_ASCII) {
-    game.shipShootMissile();
+    game.playerShootMissile();
   }
 }
 

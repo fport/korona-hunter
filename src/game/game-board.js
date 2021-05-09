@@ -22,37 +22,41 @@ const Game = function () {
     gap: 10,
   };
 
-  this.ship = {
+  // player bilgileri
+  this.playerInfo = {
     x: canvasWidth / 2 - this.scaled.width / 2,
     y: canvasHeight - 10 - this.scaled.height,
     width: this.scaled.width,
     height: this.scaled.height,
   };
 
-  this.shipMissiles = new Array();
-  this.shipSpeed = 4;
-  this.shipMissileSpeed = 3;
+  this.playerMissiles = new Array();
+  this.playerSpeed = 4;
+  this.playerMissileSpeed = 3;
 
-  this.invaders = new Array();
-  this.invadersMissiles = new Array();
-  this.invaderMissileSpeed = 3;
+  // korona bilgileri
+  this.korono = new Array(); //invaders
+  this.koronoMissiles = new Array(); //invadersMissiles
+  this.koronoMissileSpeed = 3; // invaderMissileSpeed
 
   this.missileWidth = 20;
   this.missileHeight = 20;
+  this.koronoRange = { x: 0, width: 0 };
 
+  // oyunun bitip bitmedigini kontrol eden degisken
   this.completed = false;
-  this.invadersRange = { x: 0, width: 0 };
 
+  // baslangin fonksiyonumuz
   this.init = function () {
     let propertyKorona = this.id;
-    this.invadersRange.width =
+    this.koronoRange.width =
       propertyKorona.cols * propertyKorona.width +
       propertyKorona.cols * propertyKorona.gap;
 
-    this.invadersRange.x = canvasWidth / 2 - this.invadersRange.width / 2;
+    this.koronoRange.x = canvasWidth / 2 - this.koronoRange.width / 2;
 
     let yoffset = 10;
-    let xoffset = this.invadersRange.x;
+    let xoffset = this.koronoRange.x;
 
     for (let x = 0; x < propertyKorona.cols; x++) {
       for (let y = 0; y < propertyKorona.rows; y++) {
@@ -65,15 +69,15 @@ const Game = function () {
 
         invader.x += xoffset;
         invader.y += yoffset;
-        this.invaders.push(invader);
+        this.korono.push(invader);
       }
     }
   };
 
-  //image
+  // cizme fonksiyonu : korona ve playeri cizer
   this.draw = function (cc) {
-    for (let i = 0; i < this.invaders.length; i++) {
-      let invader = this.invaders[i];
+    for (let i = 0; i < this.korono.length; i++) {
+      let invader = this.korono[i];
       drawImg(
         cc,
         this.korona,
@@ -86,55 +90,57 @@ const Game = function () {
     drawImg(
       cc,
       this.player,
-      this.ship.x,
-      this.ship.y,
-      this.ship.width,
-      this.ship.height
+      this.playerInfo.x,
+      this.playerInfo.y,
+      this.playerInfo.width,
+      this.playerInfo.height
     );
   };
-
+  // oyunu guncellemek icin kullandigimiz fonksiyon
   this.update = function (cc) {
     if (this.completed) return;
-    this.updateShipMovement();
+    this.updatePlayerMovement();
     this.draw(cc);
     this.updateMissiles(cc);
-    this.updateInvadersBehaviour();
+    this.updateKoronoBehaviour();
     this.checkGameCompleted();
   };
 
-  this.updateShipMovement = function () {
+  // kullanilan klavye kombinasyonunu dinleyip ona gore tetiklenen atamalar
+  this.updatePlayerMovement = function () {
     if (leftkey) {
-      this.ship.x -= this.shipSpeed;
+      this.playerInfo.x -= this.playerSpeed;
     }
     if (rightkey) {
-      this.ship.x += this.shipSpeed;
+      this.playerInfo.x += this.playerSpeed;
     }
-    if (this.ship.x < this.invadersRange.x) {
-      this.ship.x = this.invadersRange.x;
+    if (this.playerInfo.x < this.koronoRange.x) {
+      this.playerInfo.x = this.koronoRange.x;
     }
     if (
-      this.ship.x + this.ship.width >
-      this.invadersRange.x + this.invadersRange.width
+      this.playerInfo.x + this.playerInfo.width >
+      this.koronoRange.x + this.koronoRange.width
     ) {
-      this.ship.x =
-        this.invadersRange.x + this.invadersRange.width - this.ship.width;
+      this.playerInfo.x =
+        this.koronoRange.x + this.koronoRange.width - this.playerInfo.width;
     }
   };
 
-  this.shipShootMissile = function () {
+  // playerin ates etmesini saglayan fonksiyon
+  this.playerShootMissile = function () {
     let missile = {
-      x: this.ship.x + this.ship.width / 2 - this.missileWidth / 2,
-      y: this.ship.y - this.missileHeight,
+      x: this.playerInfo.x + this.playerInfo.width / 2 - this.missileWidth / 2,
+      y: this.playerInfo.y - this.missileHeight,
     };
-    this.shipMissiles.push(missile);
+    this.playerMissiles.push(missile);
   };
 
   this.updateMissiles = function (cc) {
-    for (let i = 0; i < this.shipMissiles.length; i++) {
-      let missile = this.shipMissiles[i];
-      missile.y -= this.shipMissileSpeed;
-      for (let j = 0; j < this.invaders.length; j++) {
-        let inv = this.invaders[j];
+    for (let i = 0; i < this.playerMissiles.length; i++) {
+      let missile = this.playerMissiles[i];
+      missile.y -= this.playerMissileSpeed;
+      for (let j = 0; j < this.korono.length; j++) {
+        let inv = this.korono[j];
         if (
           rectColl(
             missile.x,
@@ -147,8 +153,8 @@ const Game = function () {
             inv.height
           )
         ) {
-          this.shipMissiles.splice(i, 1);
-          this.invaders.splice(j, 1);
+          this.playerMissiles.splice(i, 1);
+          this.korono.splice(j, 1);
           break;
         }
       }
@@ -162,19 +168,20 @@ const Game = function () {
       );
     }
 
-    for (let i = 0; i < this.invadersMissiles.length; i++) {
-      let missile = this.invadersMissiles[i];
-      missile.y += this.invaderMissileSpeed;
+    // oyunun bitip bitmedigini kontrol eder ve basarisiz bitti ise gameover screen yonlendirir
+    for (let i = 0; i < this.koronoMissiles.length; i++) {
+      let missile = this.koronoMissiles[i];
+      missile.y += this.koronoMissileSpeed;
       if (
         rectColl(
           missile.x,
           missile.y,
           this.missileWidth,
           this.missileHeight,
-          this.ship.x,
-          this.ship.y,
-          this.ship.width,
-          this.ship.height
+          this.playerInfo.x,
+          this.playerInfo.y,
+          this.playerInfo.width,
+          this.playerInfo.height
         )
       ) {
         this.completed = true;
@@ -192,30 +199,29 @@ const Game = function () {
     }
   };
 
-  this.updateInvadersBehaviour = function () {
+  this.updateKoronoBehaviour = function () {
     let shoot = Math.random();
     if (shoot < 0.03) {
-      let invader = this.invaders[
-        Math.floor(Math.random() * this.invaders.length)
-      ];
+      let koronax = this.korono[Math.floor(Math.random() * this.korono.length)];
       let missile = {
-        x: invader.x + invader.width / 2 - this.missileWidth / 2,
-        y: invader.y + invader.height,
+        x: koronax.x + koronax.width / 2 - this.missileWidth / 2,
+        y: koronax.y + koronax.height,
       };
-      this.invadersMissiles.push(missile);
+      this.koronoMissiles.push(missile);
     }
   };
 
+  // oyunun bitip bitmedigini kontrol eder ve basarili bitti ise gamesuccess screen yonlendirir
   this.checkGameCompleted = function () {
-    localStorage.setItem("killedKorona", this.invaders.length);
-    if (this.invaders.length < 1) {
+    localStorage.setItem("killedKorona", this.korono.length);
+    if (this.korono.length < 1) {
       this.completed = true;
 
-      this.shipSpeed = 4;
-      this.shipMissileSpeed = 3;
-      this.ship.x = 4;
-      this.ship.y = 3;
-      this.invaderMissileSpeed = 3;
+      this.playerSpeed = 4;
+      this.playerMissileSpeed = 3;
+      this.playerInfo.x = 4;
+      this.playerInfo.y = 3;
+      this.koronoMissileSpeed = 3;
 
       route("gamesuccess", { username: username });
     }
